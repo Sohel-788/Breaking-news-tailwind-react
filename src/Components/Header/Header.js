@@ -1,16 +1,24 @@
 
 import React from 'react';
-
+import { useSpring, animated } from 'react-spring';
 import logo from '../../logo.svg'
 import './Header.css';
 const Header = () => {
+    const styles = useSpring({
+        loop: true,
+        to: [
+          { opacity: 1, color: '#ffaaee' },
+          { opacity: 0, color: 'rgb(14,26,19)' },
+        ],
+        from: { opacity: 0, color: 'red' },
+      })
     return (
         <div>
             <div className="header">
                 <div className='logo'>
                     <a href="/" className='flex justify-center'>
                     <img src={logo} alt="" />
-                    <small>Instant News</small>
+                    <animated.div style={styles}><small>Instant News</small></animated.div>
                     </a>
                 </div>
                 <div>
